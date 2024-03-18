@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import {v4 as uuidv4} from "uuid";
 
-interface TaskI {
+export interface TaskI {
   id: number;
   title: string;
 }

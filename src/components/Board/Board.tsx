@@ -1,12 +1,11 @@
 import {
   DragDropContext,
-  Draggable,
   DropResult,
-  Droppable,
 } from "react-beautiful-dnd";
 import { useDispatch, useSelector } from "react-redux";
 import { getColumns } from "../../store/slices/board/selectors/selectors";
 import { ColumnI, updateColumns } from "../../store/slices/board/Board.slice";
+import { Column } from '../Column/Column'
 
 export const Board: React.FC = () => {
   const dispatch = useDispatch();
@@ -42,39 +41,9 @@ export const Board: React.FC = () => {
   return (
     <DragDropContext onDragEnd={(result) => onDragEnd(result, columns)}>
       <div>
-        {Object.entries(columns).map(([columnId, column]) => {
+        {Object.keys(columns).map((columnId) => {
           return (
-            <Droppable droppableId={columnId} key={columnId}>
-              {(provided) => {
-                return (
-                  <div {...provided.droppableProps} ref={provided.innerRef}>
-                    <h3>{column.title}</h3>
-                    {column.tasks.map((task, index) => {
-                      return (
-                        <Draggable
-                          key={task.id}
-                          draggableId={task.id.toString()}
-                          index={index}
-                        >
-                          {(provided) => {
-                            return (
-                              <div
-                                ref={provided.innerRef}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                              >
-                                {task.title}
-                              </div>
-                            );
-                          }}
-                        </Draggable>
-                      );
-                    })}
-                    {provided.placeholder}
-                  </div>
-                );
-              }}
-            </Droppable>
+            <Column key={columnId} columnId={columnId} />
           );
         })}
       </div>
