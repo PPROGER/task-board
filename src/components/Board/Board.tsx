@@ -1,11 +1,9 @@
-import {
-  DragDropContext,
-  DropResult,
-} from "react-beautiful-dnd";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useDispatch, useSelector } from "react-redux";
 import { getColumns } from "../../store/slices/board/selectors/selectors";
 import { ColumnI, updateColumns } from "../../store/slices/board/Board.slice";
-import { Column } from '../Column/Column'
+import { Column } from "../Column/Column";
+import s from "./Board.module.scss";
 
 export const Board: React.FC = () => {
   const dispatch = useDispatch();
@@ -40,11 +38,9 @@ export const Board: React.FC = () => {
   };
   return (
     <DragDropContext onDragEnd={(result) => onDragEnd(result, columns)}>
-      <div>
+      <div className={s.board_content}>
         {Object.keys(columns).map((columnId) => {
-          return (
-            <Column key={columnId} columnId={columnId} />
-          );
+          return <Column key={columnId} columnId={columnId} />;
         })}
       </div>
     </DragDropContext>

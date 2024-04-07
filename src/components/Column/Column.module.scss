@@ -1,0 +1,52 @@
+.board_column {
+	width: 260px;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.board_column_head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.colunm_title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.column_name {
+	font-size: 14px;
+	font-weight: bold;
+	color: #1f2633;
+}
+
+.column_count_1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 3px 8px;
+	border-radius: 50%;
+	background-color: #e5c975;
+	color: #ca8a04;
+}
+
+.board_column_tasks {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	// height: 300px;
+	overflow-y: auto;
+}
+
+.add_task {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #f2f4f7;
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 6px;
+}

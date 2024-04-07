@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import {v4 as uuidv4} from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 interface ProjectI {
   id: string;
@@ -12,21 +12,25 @@ interface ProjectStateI {
 }
 
 export const getInitialProjectState = (): ProjectStateI => ({
-	projects: [
-		{
-			id: uuidv4(),
-			title: "Project 1",
-		},
-		{
-			id: uuidv4(),
-			title: "Project 2",
-		},
-		{
-			id: uuidv4(),
-			title: "Project 3",
-		}
-	],
-	selectProject: null,
+  projects: [
+    {
+      id: uuidv4(),
+      title: "Project 1",
+    },
+    {
+      id: uuidv4(),
+      title: "Project 2",
+    },
+    {
+      id: uuidv4(),
+      title: "Project 3",
+    },
+    {
+      id: uuidv4(),
+      title: "Project 4",
+    },
+  ],
+  selectProject: null,
 });
 
 const initialState: ProjectStateI = getInitialProjectState();
