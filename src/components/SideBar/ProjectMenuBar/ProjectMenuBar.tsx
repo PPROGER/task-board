@@ -8,6 +8,11 @@ import {
 } from "../../../store/slices/project/selectors/selectors";
 import TagImage from "../../assets/images/sidebar/tag.svg";
 import { updateSelectProject } from "../../../store/slices/project/Project.slice";
+import { getBoardByProjectId } from "../../../store/slices/board/utils";
+import {
+  setDataBoards,
+  updateActiveBoard,
+} from "../../../store/slices/board/Board.slice";
 
 export const ProjectMenuBar = () => {
   const projects = useSelector(getProjects);
@@ -19,6 +24,18 @@ export const ProjectMenuBar = () => {
     dispatch(
       updateSelectProject({
         id,
+      })
+    );
+
+    const board = getBoardByProjectId(id);
+    dispatch(
+      setDataBoards({
+        [board.id]: board,
+      })
+    );
+    dispatch(
+      updateActiveBoard({
+        id: board.id,
       })
     );
   };

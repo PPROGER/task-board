@@ -11,7 +11,7 @@ interface PropsI {
 }
 export const Column: React.FC<PropsI> = (props) => {
   const { columnId } = props;
-  const column = useSelector(getColumn(columnId));
+  const { title, color, tasks } = useSelector(getColumn(columnId));
 
   const addTaskHandler = () => {
     alert("Add task");
@@ -28,15 +28,23 @@ export const Column: React.FC<PropsI> = (props) => {
           >
             <div className={s.board_column_head}>
               <div className={s.colunm_title}>
-                <div className={s.column_name}>{column.title}</div>
-                <div className={s.column_count_1}>{column.tasks.length}</div>
+                <div className={s.column_name}>{title}</div>
+                <div
+                  className={s.column_count_1}
+                  style={{
+                    color: color.color,
+                    backgroundColor: color.background,
+                  }}
+                >
+                  {tasks.length}
+                </div>
               </div>
               <div className={s.column_menu}>
                 <img src={MoreImage} alt="menu_icon" />
               </div>
             </div>
             <div className={s.board_column_tasks}>
-              {column.tasks.map((task, index) => {
+              {tasks.map((task, index) => {
                 return <Task task={task} index={index} key={task.id} />;
               })}
             </div>

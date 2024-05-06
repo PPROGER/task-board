@@ -1,7 +1,6 @@
 import { Draggable } from "react-beautiful-dnd";
-import { TaskI } from "../../store/slices/board/Board.slice";
-import AvatarImage from "../assets/images/content/Avatar.png";
 import s from "./Task.module.scss";
+import { TaskI } from "../../store/slices/board/type";
 
 interface PropsI {
   task: TaskI;
@@ -23,13 +22,24 @@ export const Task: React.FC<PropsI> = (props) => {
               <div className={s.title_task}>{task.title}</div>
             </div>
             <div className={s.tags_task}>
-              <div className={s.task_tag_1}>#001</div>
-              <div className={s.task_tag_2}>Design</div>
-              <div className={s.task_tag_3}>backlog</div>
+              {task.tags.map((tag, index) => (
+                <div
+                  key={index}
+                  className={s.task_tag}
+                  style={{
+                    color: tag.color.color,
+                    backgroundColor: tag.color.background,
+                  }}
+                >
+                  {tag.name}
+                </div>
+              ))}
             </div>
-            <div className={s.assignment_user}>
-              <img src={AvatarImage} alt="avatar" />
-            </div>
+            {task.assignee && (
+              <div className={s.assignment_user}>
+                <img src={task.assignee?.icon} alt="avatar" />
+              </div>
+            )}
           </div>
         );
       }}

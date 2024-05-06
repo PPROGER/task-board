@@ -29,15 +29,12 @@
 	align-items: center;
 	padding: 3px 8px;
 	border-radius: 50%;
-	background-color: #e5c975;
-	color: #ca8a04;
 }
 
 .board_column_tasks {
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
-	// height: 300px;
 	overflow-y: auto;
 }
 

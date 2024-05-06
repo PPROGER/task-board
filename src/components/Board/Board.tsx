@@ -1,9 +1,10 @@
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useDispatch, useSelector } from "react-redux";
 import { getColumns } from "../../store/slices/board/selectors/selectors";
-import { ColumnI, updateColumns } from "../../store/slices/board/Board.slice";
+import { updateColumns } from "../../store/slices/board/Board.slice";
 import { Column } from "../Column/Column";
 import s from "./Board.module.scss";
+import { ColumnI } from "../../store/slices/board/type";
 
 export const Board: React.FC = () => {
   const dispatch = useDispatch();
